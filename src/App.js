@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import ProductCard from "./productCard";
+import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 
 // !! Create User Interface
@@ -20,13 +20,26 @@ function App() {
   const getProducts = async () => {
     try {
       const { data, error } = await supabase
-        .from("product")
+        .from("todos2")
         .select("*")
         .limit(10);
       if (error) throw error;
       if (data != null) {
         setProducts(data);
       }
+    } catch (error) {
+      console.log("error", error.message);
+    }
+  };
+
+  const createProduct = async () => {
+    try {
+      const { error } = await supabase
+        .from("todos2")
+        .insert([{ name, description }])
+        .single();
+      if (error) throw error;
+      window.location.reload();
     } catch (error) {
       console.log("error", error.message);
     }
@@ -46,7 +59,7 @@ function App() {
         name="description"
         placeholder="Enter your name"
       />
-      <button>Submit</button>
+      <button onClick={() => createProduct()}>Submit</button>
 
       <div>
         {products.map((products, index) => (

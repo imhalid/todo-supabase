@@ -57,14 +57,14 @@ function App() {
                 type="text"
                 name="name"
                 className="border rounded-md p-2 w-[300px]"
-                placeholder="Enter your name"
+                placeholder="Subject"
              />
              <input
                 onChange={(e) => setDescription(e.target.value)}
                 type="text"
                 name="description"
                 className="border rounded-md p-2 w-[300px]"
-                placeholder="Enter your name"
+                placeholder="Enter your description"
              />
            </div>
            <button onClick={() => createProduct()}

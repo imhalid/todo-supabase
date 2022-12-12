@@ -34,15 +34,15 @@ const ProductCard = (props) => {
   };
 
   return (
-     <div className="first:mt-5 mb-2">
+     <div className="first:mt-5 mb-2 hover:bg-gray-50 transition-all rounded-lg px-2 py-1  group">
        {editing === false ? (
-          <div className="flex justify-between">
-            <div>
+          <div className="flex justify-between relative ">
+            <div className="">
 
-              <h1 className="">{product.name}</h1>
-              <p className="text-slate-500 text-sm">{product.description}</p>
+              <h1>{product.name}</h1>
+              <p className="text-gray-500 text-sm">{product.description}</p>
             </div>
-            <div>
+            <div className="group-hover:opacity-100 opacity-0 absolute -right-[106px] top-0 bottom-1/2 transition-all">
               <button className="p-2 cursor-pointer bg-blue-100 rounded-md" onClick={() => setEditing(true)}>✏️
               </button>
               <button className="p-2 ml-2 cursor-pointer bg-red-100 rounded-md" onClick={() => deleteProduct()}>🗑
